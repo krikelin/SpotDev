@@ -81,6 +81,20 @@ namespace SpotDev {
             }
         }
         
+        internal static System.Drawing.Bitmap house {
+            get {
+                object obj = ResourceManager.GetObject("house", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap ic_add {
+            get {
+                object obj = ResourceManager.GetObject("ic_add", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap ic_expander_closed {
             get {
                 object obj = ResourceManager.GetObject("ic_expander_closed", resourceCulture);

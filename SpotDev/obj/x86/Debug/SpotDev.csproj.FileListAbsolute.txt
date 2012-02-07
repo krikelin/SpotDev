@@ -2,13 +2,13 @@ L:\SpotDev\SpotDev\bin\Debug\SpotDev.exe.config
 L:\SpotDev\SpotDev\bin\Debug\SpotDev.exe
 L:\SpotDev\SpotDev\bin\Debug\SpotDev.pdb
 L:\SpotDev\SpotDev\obj\x86\Debug\ResolveAssemblyReference.cache
-L:\SpotDev\SpotDev\obj\x86\Debug\SpotDev.Form1.resources
 L:\SpotDev\SpotDev\obj\x86\Debug\SpotDev.InputDialog.resources
 L:\SpotDev\SpotDev\obj\x86\Debug\SpotDev.MainForm.resources
 L:\SpotDev\SpotDev\obj\x86\Debug\SpotDev.Properties.Resources.resources
 L:\SpotDev\SpotDev\obj\x86\Debug\SpotDev.Resources.resources
+L:\SpotDev\SpotDev\obj\x86\Debug\SpotDev.SPWebBrowser.resources
 L:\SpotDev\SpotDev\obj\x86\Debug\SpotDev.SPListView.resources
-L:\SpotDev\SpotDev\obj\x86\Debug\GenerateResource.read.1.tlog
-L:\SpotDev\SpotDev\obj\x86\Debug\GenerateResource.write.1.tlog
+L:\SpotDev\SpotDev\obj\x86\Debug\ResGen.read.1.tlog
+L:\SpotDev\SpotDev\obj\x86\Debug\ResGen.write.1.tlog
 L:\SpotDev\SpotDev\obj\x86\Debug\SpotDev.exe
 L:\SpotDev\SpotDev\obj\x86\Debug\SpotDev.pdb

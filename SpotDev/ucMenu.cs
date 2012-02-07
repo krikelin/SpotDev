@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Data;
-using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
@@ -54,7 +53,7 @@ namespace SpotDev
                         g.DrawString(Item.Text, new Font("MS Sans Serif", 8), new SolidBrush(foreColor), new Point(38, pos + 2));
                         if (Item.Icon != null)
                         {
-                            g.DrawImage(Item.Icon, 16, pos, 16, 16);
+                            g.DrawImage(Item.Icon, 16, pos +1, 16, 16);
                         } 
                         // If has subItems create expander
                         if (Item.Children.Count > 0)
@@ -79,7 +78,7 @@ namespace SpotDev
                             g.DrawString(subItem.Text, new Font("MS Sans Serif", 8), new SolidBrush(foreColor), new Point(52, pos + 2));
                             if (Item.Icon != null)
                             {
-                                g.DrawImage(Item.Icon, 32, pos, 16, 16);
+                                g.DrawImage(Item.Icon, 32, pos + 1, 16, 16);
                             }
                             pos += ItemHeight;
                         }
@@ -152,12 +151,7 @@ namespace SpotDev
                     foreach(SPListItem item in this.Items) 
                     {
                         item.Selected = false;
-                        if (ItemSelected != null)
-                        {
-                            SPListItemEventArgs args = new SPListItemEventArgs();
-                            args.Item = item;
-                            this.ItemSelected(this, args);
-                        }
+                        
                         
                         foreach (SPListItem subItem in item.Children)
                         {
@@ -166,6 +160,9 @@ namespace SpotDev
                         }
                     }
                     Item.Selected = true;
+                    SPListItemEventArgs args = new SPListItemEventArgs();
+                    args.Item = Item;
+                    this.ItemSelected(this, args);
                 }
                 pos += ItemHeight;
                 // If has subitems draw them
@@ -174,6 +171,7 @@ namespace SpotDev
                     {
                         if (e.Y > pos && e.Y < pos + ItemHeight)
                         {
+                            
                             // Deselect all items
                             foreach (SPListItem item in  Item.Children)
                             {
@@ -190,6 +188,7 @@ namespace SpotDev
                                     subItem2.Selected = false;
 
                                 }
+                              
 
                             }
                             subItem.Selected = true;
