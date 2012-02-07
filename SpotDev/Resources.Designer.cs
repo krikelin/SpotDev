@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SpotDev.Properties {
+namespace SpotDev {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace SpotDev.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SpotDev.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SpotDev.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -60,9 +60,58 @@ namespace SpotDev.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap application_view_xp {
+            get {
+                object obj = ResourceManager.GetObject("application_view_xp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap footer {
+            get {
+                object obj = ResourceManager.GetObject("footer", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap Header {
             get {
                 object obj = ResourceManager.GetObject("Header", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap ic_expander_closed {
+            get {
+                object obj = ResourceManager.GetObject("ic_expander_closed", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap ic_expander_open {
+            get {
+                object obj = ResourceManager.GetObject("ic_expander_open", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap ic_settings {
+            get {
+                object obj = ResourceManager.GetObject("ic_settings", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap menu_selection {
+            get {
+                object obj = ResourceManager.GetObject("menu_selection", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap spotifyapp {
+            get {
+                object obj = ResourceManager.GetObject("spotifyapp", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

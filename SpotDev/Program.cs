@@ -22,6 +22,7 @@ namespace SpotDev
 {
     static class Program
     {
+        public static DefaultSkin Skin = new DefaultSkin();
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -30,7 +31,7 @@ namespace SpotDev
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new MainForm());
         }
     }
 }
