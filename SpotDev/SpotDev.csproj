@@ -98,6 +98,7 @@
     </Compile>
     <Compile Include="SPListItem.cs" />
     <Compile Include="Spotify.cs" />
+    <Compile Include="SPScheme.cs" />
     <Compile Include="SPWebBrowser.cs">
       <SubType>UserControl</SubType>
     </Compile>

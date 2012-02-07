@@ -21,7 +21,7 @@ namespace SpotDev
         {
             this.Controls.Add(c);
             c.Dock = DockStyle.Fill;
-            c.Load("welcome.html");
+            c.Load("file://C:\\welcome.html");
            
         }
     }

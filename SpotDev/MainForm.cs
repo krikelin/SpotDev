@@ -94,10 +94,11 @@ namespace SpotDev
         {
             InitializeComponent();
             this.spListView1 = new SPListView();
-            this.panel3.Controls.Add(spListView1);
             // Add content panel
             contentPanel = new Panel();
             this.panel3.Controls.Add(contentPanel);
+            this.panel3.Controls.Add(spListView1);
+            
             contentPanel.Dock = DockStyle.Fill;
             spListView1.Dock = DockStyle.Left;
             spListView1.Width =204;
