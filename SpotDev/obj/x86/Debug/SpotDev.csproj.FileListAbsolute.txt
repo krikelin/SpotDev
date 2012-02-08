@@ -13,3 +13,6 @@ L:\SpotDev\SpotDev\obj\x86\Debug\ResGen.write.1.tlog
 L:\SpotDev\SpotDev\obj\x86\Debug\SpotDev.exe
 L:\SpotDev\SpotDev\obj\x86\Debug\SpotDev.pdb
 L:\SpotDev\SpotDev\obj\x86\Debug\SpotDev.SPTextEditor.resources
+L:\SpotDev\SpotDev\obj\x86\Debug\SpotDev.ManifestEditor.resources
+L:\SpotDev\SpotDev\obj\x86\Debug\SpotDev.SPManifestEditor.resources
+L:\SpotDev\SpotDev\obj\x86\Debug\SpotDev.AddFile.resources

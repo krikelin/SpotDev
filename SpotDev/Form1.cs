@@ -24,7 +24,7 @@ using System.IO;
 
 namespace SpotDev
 {
-    public partial class Form1 : Form
+    public partial class Form1 : UserControl, ISPComponent
     {
         public SpotifyApp CurrentApp { get; set; }
         public Form1()
@@ -39,18 +39,24 @@ namespace SpotDev
 
         private void newProjectToolStripMenuItem_Click(object sender, EventArgs e)
         {
-             InputDialog inputDialog = new InputDialog("New project", "", "Enter the app domain name");
-            if (inputDialog.ShowDialog() == DialogResult.OK)
-            {
-                DirectoryInfo dir = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\Spotify\\"+inputDialog.Value);
-           
-                SpotifyApp app = new SpotifyApp(dir);
-                this.CurrentApp = app;
-                propertyGrid1.SelectedObject = app.Manifest;
-            }
+            
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void propertyGrid1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        void ISPEditor.Save()
         {
             if (CurrentApp != null)
             {
@@ -58,8 +64,39 @@ namespace SpotDev
             }
         }
 
-        private void tabPage1_Click(object sender, EventArgs e)
+        void ISPEditor.SaveAs(string fileName)
         {
-                    }
+            
+            this.CurrentApp.Save();
+        }
+
+        bool ISPEditor.IsSaved
+        {
+            get
+            {
+                return this.CurrentApp.Saved;
+            }
+            set
+            {
+                this.CurrentApp.Saved = value;
+            }
+        }
+
+        string ISPEditor.Text
+        {
+            get
+            {
+                return "";
+            }
+            set
+            {
+           
+            }
+        }
+
+        string ISPEditor.FileName
+        {
+            get { return this.CurrentApp.Directory.FullName; }
+        }
     }
 }

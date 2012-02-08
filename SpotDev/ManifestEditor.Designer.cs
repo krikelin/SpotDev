@@ -28,9 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // ManifestEditor
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(284, 262);
+            this.Name = "ManifestEditor";
             this.Text = "ManifestEditor";
+            this.Load += new System.EventHandler(this.ManifestEditor_Load);
+            this.ResumeLayout(false);
+
         }
 
         #endregion

@@ -10,7 +10,7 @@ using System.IO;
 
 namespace SpotDev
 {
-    public partial class SPTextEditor : UserControl, ISPEditor
+    public partial class SPTextEditor : UserControl, ISPComponent
     {
         /// <summary>
         /// File name
@@ -28,8 +28,10 @@ namespace SpotDev
             {
                 using (StreamReader sr = new StreamReader(fileName))
                 {
+                    this.fileName = fileName;
                     richTextBox1.Text = sr.ReadToEnd();
                     sr.Close();
+                    isSaved = true;
                 }
             }
             catch (Exception e)
@@ -52,13 +54,13 @@ namespace SpotDev
         {
             using (StreamWriter sw = new StreamWriter(this.FileName))
             {
-                sw.Write(this.FileName);
+                sw.Write(this.richTextBox1.Text);
                 sw.Close();
                 isSaved = true;
             }
         }
 
-        public void SaveAs(string fileName)
+        public void Save(string fileName)
         {
             using (StreamWriter sw = new StreamWriter(fileName))
             {
@@ -91,5 +93,8 @@ namespace SpotDev
         {
 
         }
+
+
+      
     }
 }

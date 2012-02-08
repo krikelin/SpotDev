@@ -48,13 +48,15 @@ namespace SpotDev
             {
                 if (Item.Selected)
                 {
-                    
-                    g.DrawImage(Resources.menu_selection, 0, pos, this.Width*500, Resources.menu_selection.Height);
-                            
+
+                    g.DrawImage(Resources.menu_selection, 0, pos, this.Width * 500, Resources.menu_selection.Height);
+
                     foreColor = Program.Skin.SelectedForeColor;
                 }
-                g.DrawString(Item.Text, new Font("MS Sans Serif", 8), new SolidBrush(Color.FromArgb(10,10,10)), new Point(level + 32, pos + 3));
-                
+                else
+                {
+                    g.DrawString(Item.Text, new Font("MS Sans Serif", 8), new SolidBrush(Color.FromArgb(10, 10, 10)), new Point(level + 32, pos + 3));
+                }
                 g.DrawString(Item.Text, new Font("MS Sans Serif", 8), new SolidBrush(foreColor), new Point(level+32, pos + 2));
                 if (Item.Icon != null)
                 {
@@ -186,22 +188,25 @@ namespace SpotDev
         }
         private void SPListView_MouseDown(object sender, MouseEventArgs e)
         {
-            int pos = -scrollY;
-            int level = 0;
-            // Draw all list items
-            foreach (SPListItem Item in Items)
-            {
-                deselectItem(Item);
-            }
-            if (Items != null)
+                int pos = -scrollY;
+                int level = 0;
+                // Draw all list items
+                foreach (SPListItem Item in Items)
+                {
+                    deselectItem(Item);
+                }
+                if (Items != null)
 
-            foreach (SPListItem Item in Items)
-            {
+                    foreach (SPListItem Item in Items)
+                    {
 
-                checkItem(Item, e, ref level, ref pos);
-                
-            }
+                        checkItem(Item, e, ref level, ref pos);
+
+                    }
+           
+           
             this.Paint(this.CreateGraphics());
+
         }
     }
     

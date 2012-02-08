@@ -9,16 +9,11 @@ using System.Windows.Forms;
 
 namespace SpotDev
 {
-    public partial class ManifestEditor : Form
+    public partial class AddFile : Form
     {
-        public ManifestEditor()
+        public AddFile()
         {
             InitializeComponent();
-        }
-
-        private void ManifestEditor_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

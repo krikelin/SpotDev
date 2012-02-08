@@ -9,7 +9,7 @@ namespace SpotDev
 {
     class DefaultSkin
     {
-        public Color BackgroundColor = Color.FromArgb(34, 34, 34);
+        public Color BackgroundColor = Color.FromArgb(55, 55, 55);
         public Color ForegroundColor = Color.FromArgb(221, 221, 221);
         public Color SelectionColor = Color.FromArgb(172, 220, 254);
 
@@ -22,7 +22,7 @@ namespace SpotDev
         public LinearGradientBrush TabBarActiveBackgroundGradient;
         public DefaultSkin() 
         {
-            TabBarActiveBackgroundGradient = new LinearGradientBrush(new Point(0, 0), new Point(0, 24), Color.FromArgb( 0, 0, 0), this.BackgroundColor);
+            TabBarActiveBackgroundGradient = new LinearGradientBrush(new Point(0, 0), new Point(0, 24), Color.FromArgb( 44, 44, 44), this.BackgroundColor);
             TabBarBackgroundGradient=  new LinearGradientBrush(new Point(0, 0), new Point(0, 28), this.TabBarBackgroundColor, this.TabBarBackgroundColor2);
 
         }

@@ -85,7 +85,7 @@ namespace SpotDev
             
             
             AddItem("#Projects", new Uri("spotdev:start"));
-            SPListItem item = AddItem("New Project", new Uri("spotdev:add"));
+            SPListItem item = AddItem("New Project", new Uri("spotdev:create:app"));
             item.Icon = Resources.ic_add;
             item.Color = Color.FromArgb(127, 255, 127);
             String workDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\Spotify";
@@ -108,7 +108,23 @@ namespace SpotDev
         /// <param name="uri"></param>
         public void navigate(Uri uri)
         {
-            tabView.navigate("Test", uri);
+            if (uri.ToString() == "spotdev:create:app")
+            {
+                InputDialog inputDialog = new InputDialog("New project", "", "Enter the app domain name");
+                if (inputDialog.ShowDialog() == DialogResult.OK)
+                {
+                    DirectoryInfo dir = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\Spotify\\" + inputDialog.Value);
+
+                    SpotifyApp app = new SpotifyApp(dir);
+
+                    // Add the project to the tree
+                    LoadProject(dir);
+                    
+                }
+                return;
+            }
+            
+            tabView.Navigate("Test", uri);
         }
         SPTabView tabView;
         Panel contentPanel;
@@ -118,9 +134,10 @@ namespace SpotDev
             this.spListView1 = new SPListView();
             // Add content panel
             contentPanel = new Panel();
+            this.panel3.TabStop = true;
             this.panel3.Controls.Add(contentPanel);
             this.panel3.Controls.Add(spListView1);
-            
+            contentPanel.TabStop = true;
             contentPanel.Dock = DockStyle.Fill;
             spListView1.Dock = DockStyle.Left;
             spListView1.Width =234;
@@ -171,5 +188,16 @@ namespace SpotDev
         {
 
         }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Control c = tabView.ActiveTab.Control;
+            if (c is ISPComponent )
+            {
+                ISPComponent component = (ISPComponent)c;
+                component.Save();
+
+            }
+       }
     }
 }

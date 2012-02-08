@@ -34,10 +34,7 @@ namespace SpotDev
     [Serializable]
     public class SpotifyApp
     {
-        public void Save()
-        {
-            this.Manifest.Save();
-        }
+        
         public bool Saved { get; set; }
         public SpotifyApp(DirectoryInfo directory)
         {
@@ -59,7 +56,7 @@ namespace SpotDev
                     this.Manifest = (SpotifyManifest)serializer.Deserialize<SpotifyManifest>(sr.ReadToEnd());
                 }
             }
-            this.Manifest = new SpotifyManifest(directory);
+            
         }
         public DirectoryInfo Directory { get; set; }
         public SpotifyManifest Manifest { get; set; }
@@ -81,22 +78,25 @@ namespace SpotDev
     [Serializable]
     public class SpotifyManifest
     {
-        private DirectoryInfo directory;
-        public SpotifyManifest(DirectoryInfo directory)
+        public SpotifyManifest()
         {
-            this.directory = directory;
-            AppName = new Dictionary<String, String>();
+           
+             AppName = new Dictionary<String, String>();
 
             DefaultTabs = new List<SpotifyTab>();
+            AppIcon = new Dictionary<string, string>();
+            AppName = new Dictionary<string, string>();
+            AppDescription = new Dictionary<string, string>();
             RequiredPermissions = new List<String>();
-            SupportedLanguages = new List<string>();
+            SupportedLanguages = new List<String>();
         }
         [DefaultValue("")]
-        public String AppDescription { get; set; }
-        public String AppIcon { get; set; }
+        public Dictionary<String, String> AppDescription { get; set; }
+        [DefaultValue("")]
+        public Dictionary<String, String> AppIcon { get; set; }
         public Dictionary<String, String> AppName { get; set; }
-
-        public Uri AppURL { get; set; }
+        [DefaultValue("")]
+        public String AppURL { get; set; }
         [DefaultValue("")]
         public String BundleCopyright { get; set; }
         [DefaultValue("")]
@@ -108,20 +108,6 @@ namespace SpotDev
         public List<String> SupportedLanguages { get; set; }
         [DefaultValue("")]
         public String VendorIdentifier { get; set; }
-        /// <summary>
-        /// Saves the manifest
-        /// </summary>
-        public void Save()
-        {
-            JavaScriptSerializer js = new JavaScriptSerializer();
-            String manifest = js.Serialize(this);
-            using (StreamWriter sw = new StreamWriter(directory.FullName + "\\manifest.json"))
-            {
-                sw.Write(manifest);
-                sw.Close();
-            }
-            
-        }
-
+        
     }
 }

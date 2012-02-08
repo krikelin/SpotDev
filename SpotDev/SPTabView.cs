@@ -13,6 +13,7 @@ namespace SpotDev
     /// </summary>
     public interface ISPComponent 
     {
+        void Save();
         void Save(String fileName);
         bool IsSaved {get;set;}
         void LoadFile(String fileName);
@@ -67,12 +68,18 @@ namespace SpotDev
                      shadowColor = Color.FromArgb(55, 55, 55);
                      
                      g.DrawImage(Resources.ic_close, new Point(pos + 120 - 24, 5));
+                     g.DrawLine(new Pen(Color.FromArgb(122, 122, 122), 1), new Point(pos, 0), new Point(pos, tabHeight - 2));
+                }
+                bool isSaved = false;
+                if(tab.Control is ISPComponent)
+                {
+                    isSaved = ((ISPComponent)tab.Control).IsSaved;
                 }
                 // Draw string
-                g.DrawString(tab.Title, new Font("MS Sans Serif", 8), new SolidBrush(shadowColor), new Point(pos + 20, 3));
-                g.DrawString(tab.Title, new Font("MS Sans Serif", 8), new SolidBrush(foreColor), new Point(pos + 20, 2));
-                g.DrawLine(new Pen(Color.FromArgb(122, 122, 122), 1), new Point(pos + 120, 0), new Point(pos + 120, tabHeight - 2));
-                g.DrawLine(new Pen(Color.FromArgb(172, 172, 172), 1), new Point(pos + 121, 0), new Point(pos + 121, tabHeight - 2));
+                g.DrawString(tab.Title + (isSaved ? "" : "*"), new Font("MS Sans Serif", 8), new SolidBrush(shadowColor), new Point(pos + 20, 3));
+                g.DrawString(tab.Title + (isSaved ? "" : "*"), new Font("MS Sans Serif", 8), new SolidBrush(foreColor), new Point(pos + 20, 2));
+                
+                g.DrawLine(new Pen(Color.FromArgb(172, 172, 172), 1), new Point(pos + 120, 0), new Point(pos + 120, tabHeight - 2));
                 pos += 120;
             }
         }
@@ -126,6 +133,7 @@ namespace SpotDev
                 contentPanel.Height = this.Height - tabHeight;
                 contentPanel.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top | AnchorStyles.Bottom;
                 this.MouseDown += new MouseEventHandler(SPTabView_MouseDown);
+                this.TabStop = true;
         }
         
         void SPTabView_MouseDown(object sender, MouseEventArgs e)
@@ -135,13 +143,13 @@ namespace SpotDev
             {
                 if (e.X >= pos && e.X <= pos + 120)
                 {
-                    navigate(tab.Title, tab.Uri);
+                    Navigate(tab.Title, tab.Uri);
                     break;
                 }
                 pos += 120;
             }
         }
-        public void navigate(String title, Uri uri)
+        public void Navigate(String title, Uri uri)
         {
             // Add navigation handler here
             String url = uri.ToString();
@@ -167,19 +175,30 @@ namespace SpotDev
                         path.Append("\\" + tokens[i] );
                     }
                     FileInfo file = new FileInfo(path.ToString());
-                    switch (file.Extension)
+                    if (file.Name == "manifest.json")
                     {
+                        SPManifestEditor manifestEditor = new SPManifestEditor();
+                        manifestEditor.LoadFile(file.FullName);
+                        ShowControl(manifestEditor, file.Name, uri);
+                        if (this.TabChanged != null)
+                            this.TabChanged(this, new EventArgs());
+                    }
+                    else
+                    {
+                        switch (file.Extension)
+                        {
 
-                        default:
-                            {
-                                SPTextEditor textEditor = new SPTextEditor();
-                                textEditor.LoadFile(file.FullName);
-                                ShowControl(textEditor, file.Name, uri);
-                                if(this.TabChanged != null)
-                                    this.TabChanged(this, new EventArgs());
-                                
-                            }
-                            break;
+                            default:
+                                {
+                                    SPTextEditor textEditor = new SPTextEditor();
+                                    textEditor.LoadFile(file.FullName);
+                                    ShowControl(textEditor, file.Name, uri);
+                                    if (this.TabChanged != null)
+                                        this.TabChanged(this, new EventArgs());
+
+                                }
+                                break;
+                        }
                     }
                    
                 }
