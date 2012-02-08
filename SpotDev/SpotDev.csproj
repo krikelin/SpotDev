@@ -99,6 +99,15 @@
     <Compile Include="SPListItem.cs" />
     <Compile Include="Spotify.cs" />
     <Compile Include="SPScheme.cs" />
+    <Compile Include="SPTabView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SPTextEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SPTextEditor.Designer.cs">
+      <DependentUpon>SPTextEditor.cs</DependentUpon>
+    </Compile>
     <Compile Include="SPWebBrowser.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -132,6 +141,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SPTextEditor.resx">
+      <DependentUpon>SPTextEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SPWebBrowser.resx">
       <DependentUpon>SPWebBrowser.cs</DependentUpon>
@@ -189,6 +201,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\ic_doc_spotify.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cross_octagon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\world.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -12,3 +12,4 @@ L:\SpotDev\SpotDev\obj\x86\Debug\ResGen.read.1.tlog
 L:\SpotDev\SpotDev\obj\x86\Debug\ResGen.write.1.tlog
 L:\SpotDev\SpotDev\obj\x86\Debug\SpotDev.exe
 L:\SpotDev\SpotDev\obj\x86\Debug\SpotDev.pdb
+L:\SpotDev\SpotDev\obj\x86\Debug\SpotDev.SPTextEditor.resources

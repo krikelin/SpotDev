@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 
 namespace SpotDev
 {
@@ -14,6 +15,16 @@ namespace SpotDev
 
 
         public Color SelectedForeColor = Color.FromArgb(0, 24, 80);
-        public Color ListBackgroundColor = Color.FromArgb(44,44, 44);
+        public Color ListBackgroundColor = Color.FromArgb(71, 71, 71);
+        public Color TabBarBackgroundColor = Color.FromArgb(166, 166, 166);
+        public Color TabBarBackgroundColor2 = Color.FromArgb(135, 135, 135);
+        public LinearGradientBrush TabBarBackgroundGradient; 
+        public LinearGradientBrush TabBarActiveBackgroundGradient;
+        public DefaultSkin() 
+        {
+            TabBarActiveBackgroundGradient = new LinearGradientBrush(new Point(0, 0), new Point(0, 24), Color.FromArgb( 0, 0, 0), this.BackgroundColor);
+            TabBarBackgroundGradient=  new LinearGradientBrush(new Point(0, 0), new Point(0, 28), this.TabBarBackgroundColor, this.TabBarBackgroundColor2);
+
+        }
     }
 }

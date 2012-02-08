@@ -40,9 +40,9 @@ namespace SpotDev
             Color foreColor = Item.CustomColor ? Item.Color : Program.Skin.ForegroundColor;
             if (Item.Text.StartsWith("#"))
             {
-                foreColor = Color.FromArgb(100,100,100);
-                g.DrawString(Item.Text.Replace("#", ""), new Font("MS Sans Serif", 8), new SolidBrush(Color.FromArgb(50,50,50)), new Point(14, pos + 1));
-                g.DrawString(Item.Text.Replace("#", ""), new Font("MS Sans Serif", 8), new SolidBrush(foreColor), new Point(4, pos + 2));
+                foreColor = Color.FromArgb(150,150,150);
+                g.DrawString(Item.Text.ToUpper().Replace("#", ""), new Font("MS Sans Serif", 8), new SolidBrush(Color.FromArgb(50,50,50)), new Point(4, pos + 2));
+                g.DrawString(Item.Text.ToUpper().Replace("#", ""), new Font("MS Sans Serif", 8), new SolidBrush(foreColor), new Point(4, pos + 1));
             }
             else
             {
@@ -53,6 +53,8 @@ namespace SpotDev
                             
                     foreColor = Program.Skin.SelectedForeColor;
                 }
+                g.DrawString(Item.Text, new Font("MS Sans Serif", 8), new SolidBrush(Color.FromArgb(10,10,10)), new Point(level + 32, pos + 3));
+                
                 g.DrawString(Item.Text, new Font("MS Sans Serif", 8), new SolidBrush(foreColor), new Point(level+32, pos + 2));
                 if (Item.Icon != null)
                 {
@@ -127,6 +129,11 @@ namespace SpotDev
             c.Icon = icon;
             this.Items.Add(c);
             return c;
+        }
+        protected override void OnResize(EventArgs e)
+        {
+            base.OnResize(e);
+            this.Paint(CreateGraphics());
         }
         public List<SPListItem> Items { get; set; }
         private void ucMenu_Load(object sender, EventArgs e)

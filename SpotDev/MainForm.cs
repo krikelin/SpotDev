@@ -67,12 +67,23 @@ namespace SpotDev
         {
             this.spListView1.Items.Clear();
             // Add prexisisting
-            AddItem("#Start", new Uri("spotdev:start"));
-            AddItem("Start", new Uri("spotdev:start"));
-            AddItem("#Resources", new Uri("spotdev:start"));
-            AddItem("App Concept Submission", new Uri("spotdev:concept:submit"));
-            AddItem("Terms of Use", new Uri("spotdev:concept:submit"));
-            AddItem("Stack Overflow", new Uri("spotdev:concept:submit"));
+            AddItem("#Start", new Uri("http://static.cobresia.webfactional.com/spotdev/index.html"));
+            AddItem("Start", new Uri("spotdev:start"), Resources.world);
+            AddItem("#Resources", new Uri("spotdev:start"), Resources.world);
+            AddItem("App Concept Submission", new Uri("http://developer.spotify.com/en/spotify-apps-api/appconcept/"), Resources.world);
+            AddItem("Guidelines", new Uri("http://developer.spotify.com/download/spotify-apps-api/guidelines/"), Resources.world);
+            AddItem("Terms of Use", new Uri("spotdev:concept:submit"), Resources.world);
+             AddItem("Stack Overflow", new Uri("spotdev:concept:submit"), Resources.world);
+            AddItem("#Tech reference", new Uri("spotdev:concept:submit"), Resources.world);
+            SPListItem spa_reference = AddItem("Spotify Apps", new Uri("http://developer.spotify.com/download/spotify-apps-api/reference/"), Resources.world);
+            spa_reference.AddItem("Preview JS reference", new Uri("http://developer.spotify.com/download/spotify-apps-api/preview/reference/"), Resources.world);
+            spa_reference.AddItem("Production JS reference", new Uri("http://developer.spotify.com/download/spotify-apps-api/reference/"), Resources.world);
+            AddItem("#Social", new Uri("spotdev:concept:submit"), Resources.world);
+            
+            AddItem("Twitter", new Uri("http://www.twitter.com/SpotifyPlatform"), Resources.world);
+            AddItem("IRC (join #Spotify)", new Uri("http://webchat.quakenet.org/"), Resources.world);
+            
+            
             AddItem("#Projects", new Uri("spotdev:start"));
             SPListItem item = AddItem("New Project", new Uri("spotdev:add"));
             item.Icon = Resources.ic_add;
@@ -97,36 +108,9 @@ namespace SpotDev
         /// <param name="uri"></param>
         public void navigate(Uri uri)
         {
-            String url = uri.ToString();
-            if (url.StartsWith("spotdev:start"))
-            {
-                SPWebBrowser browser = new SPWebBrowser();
-                contentPanel.Controls.Add(browser);
-                browser.Dock = DockStyle.Fill;
-              
-            }
-            if (!Windows.ContainsKey(url))
-            {
-                if (url.Split(':')[1] == "project")
-                {
-                    // Create a new window based on query
-                    String app = url.Split(':')[2];
-                    String action = url.Split(':')[3];
-                    switch (action)
-                    {
-                        case "manifest":
-                            // TODO add manifest here
-                            MessageBox.Show("Show manifest editor");
-                            break;
-                    }
-                }
-            }
-            else
-            {
-                Control c = Windows[url];
-                c.BringToFront();
-            }
+            tabView.navigate("Test", uri);
         }
+        SPTabView tabView;
         Panel contentPanel;
         public MainForm()
         {
@@ -143,9 +127,20 @@ namespace SpotDev
             spListView1.ItemSelected += new SPListView.SPListItemMouseEventHandler(spListView1_ItemSelected);
             BuildMenu();
             this.Windows = new Dictionary<String, Control>();
-            navigate(new Uri("spotdev:start"));
+
+            // Add SPTabView
+            tabView = new SPTabView();
+            this.contentPanel.Controls.Add(tabView);
+            tabView.Dock = DockStyle.Fill;
+            tabView.TabChanged += new EventHandler(tabView_TabChanged);
+            navigate(new Uri("http://static.cobresia.webfactional.com/spotdev/index.html"));
             
             
+        }
+
+        void tabView_TabChanged(object sender, EventArgs e)
+        {
+         
         }
 
         void spListView1_ItemSelected(object Sender, SPListView.SPListItemEventArgs e)

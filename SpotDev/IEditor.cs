@@ -22,7 +22,7 @@ namespace SpotDev
         /// <summary>
         /// Is the file saved
         /// </summary>
-        bool isSaved { get; set; }
+        bool IsSaved { get; set; }
 
         /// <summary>
         /// The content

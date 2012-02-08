@@ -28,6 +28,7 @@ namespace SpotDev
         [STAThread]
         static void Main()
         {
+            CefSharp.CEF.Initialize(new CefSharp.Settings(), new CefSharp.BrowserSettings());
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainForm());

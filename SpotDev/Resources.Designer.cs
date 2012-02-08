@@ -102,6 +102,13 @@ namespace SpotDev {
             }
         }
         
+        internal static System.Drawing.Bitmap ic_close {
+            get {
+                object obj = ResourceManager.GetObject("ic_close", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap ic_doc_spotify {
             get {
                 object obj = ResourceManager.GetObject("ic_doc_spotify", resourceCulture);
@@ -147,6 +154,13 @@ namespace SpotDev {
         internal static System.Drawing.Bitmap spotifyapp {
             get {
                 object obj = ResourceManager.GetObject("spotifyapp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap world {
+            get {
+                object obj = ResourceManager.GetObject("world", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
