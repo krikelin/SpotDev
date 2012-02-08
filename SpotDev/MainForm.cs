@@ -12,7 +12,37 @@ namespace SpotDev
 {
     public partial class MainForm : Form
     {
-     
+        private void ListDirectory(String project, DirectoryInfo Dir, SPListItem item,ref String path)
+        {
+            // Show all directories
+            foreach (DirectoryInfo directory in Dir.GetDirectories())
+            {
+                String sub_path = path + ":" + directory.Name;
+                SPListItem dir = item.AddItem(directory.Name, new Uri("spotdev:project:" + project + ":" + sub_path + ":"), Resources.folder);
+                ListDirectory(project, directory, dir, ref path);
+            }
+            // Show all directories
+            foreach (FileInfo file in Dir.GetFiles())
+            {
+                String sub_path = path + ":" + file.Name;
+                SPListItem dir = item.AddItem(file.Name, new Uri("spotdev:project:" + project + ":" + file.Name + ":"), Resources.folder);
+                switch (file.Extension)
+                {
+                    case ".js":
+                        
+                        dir.Icon = Resources.script;
+                        break;
+                     case ".json":
+                        
+                        dir.Icon = Resources.ic_settings;
+                        break;
+                    default:
+                        dir.Icon = Resources.ic_doc_spotify;
+                        break;
+                }
+                
+            }
+        }
         public Dictionary<String, Control> Windows { get; set; }
 
         /// <summary>
@@ -24,9 +54,13 @@ namespace SpotDev
             // Create new listItem
             SPListItem d = AddItem(Dir.Name,new Uri( "spotdev:project:"+Dir.Name+":overview"));
             d.Icon = Resources.spotifyapp;
-            SPListItem liManifest = d.AddItem("Manifest", new Uri("spotdev:project:" + Dir.Name + ":manifest"));
-            liManifest.Text = "App Manifest";
-            liManifest.Icon = Resources.ic_settings;
+            String path = "";
+            ListDirectory(Dir.Name, Dir, d, ref path);
+           
+
+           
+            
+
            
         }
         public void BuildMenu()
@@ -101,11 +135,11 @@ namespace SpotDev
             
             contentPanel.Dock = DockStyle.Fill;
             spListView1.Dock = DockStyle.Left;
-            spListView1.Width =204;
+            spListView1.Width =234;
             spListView1.ItemSelected += new SPListView.SPListItemMouseEventHandler(spListView1_ItemSelected);
             BuildMenu();
             this.Windows = new Dictionary<String, Control>();
-                
+            navigate(new Uri("spotdev:start"));
             
             
         }

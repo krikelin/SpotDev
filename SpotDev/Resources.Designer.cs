@@ -67,6 +67,13 @@ namespace SpotDev {
             }
         }
         
+        internal static System.Drawing.Bitmap folder {
+            get {
+                object obj = ResourceManager.GetObject("folder", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap footer {
             get {
                 object obj = ResourceManager.GetObject("footer", resourceCulture);
@@ -95,6 +102,13 @@ namespace SpotDev {
             }
         }
         
+        internal static System.Drawing.Bitmap ic_doc_spotify {
+            get {
+                object obj = ResourceManager.GetObject("ic_doc_spotify", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap ic_expander_closed {
             get {
                 object obj = ResourceManager.GetObject("ic_expander_closed", resourceCulture);
@@ -119,6 +133,13 @@ namespace SpotDev {
         internal static System.Drawing.Bitmap menu_selection {
             get {
                 object obj = ResourceManager.GetObject("menu_selection", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap script {
+            get {
+                object obj = ResourceManager.GetObject("script", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
