@@ -69,6 +69,10 @@ namespace SpotDev
             // Add prexisisting
             AddItem("#Start", new Uri("spotdev:start"));
             AddItem("Start", new Uri("spotdev:start"));
+            AddItem("#Resources", new Uri("spotdev:start"));
+            AddItem("App Concept Submission", new Uri("spotdev:concept:submit"));
+            AddItem("Terms of Use", new Uri("spotdev:concept:submit"));
+            AddItem("Stack Overflow", new Uri("spotdev:concept:submit"));
             AddItem("#Projects", new Uri("spotdev:start"));
             SPListItem item = AddItem("New Project", new Uri("spotdev:add"));
             item.Icon = Resources.ic_add;
