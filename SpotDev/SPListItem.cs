@@ -12,6 +12,7 @@ namespace SpotDev
     [Serializable]
     public class SPListItem
     {
+        public bool Touched { get; set; }
         public Color Color
         {
             get

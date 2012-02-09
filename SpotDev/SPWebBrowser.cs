@@ -11,6 +11,13 @@ namespace SpotDev
 {
     public partial class SPWebBrowser : UserControl
     {
+        public CefSharp.CefWebBrowser Browser
+        {
+            get
+            {
+                return this.c;
+            }
+        }
         public SPWebBrowser()
         {
             InitializeComponent();

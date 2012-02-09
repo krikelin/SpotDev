@@ -66,7 +66,6 @@ namespace SpotDev
                 }
                 this.fileName = fileName;
             }
-            propertyGrid1.SelectedObject = this.Manifest;
 
         }
 
@@ -79,6 +78,33 @@ namespace SpotDev
         public void Save()
         {
             this.Save(this.fileName);
+        }
+
+       
+
+        void ISPComponent.Undo()
+        {
+            throw new NotImplementedException();
+        }
+
+        void ISPComponent.Redo()
+        {
+            throw new NotImplementedException();
+        }
+
+        bool ISPComponent.Close()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

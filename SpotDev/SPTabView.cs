@@ -17,7 +17,9 @@ namespace SpotDev
         void Save(String fileName);
         bool IsSaved {get;set;}
         void LoadFile(String fileName);
-    
+        void Undo();
+        void Redo();
+        bool Close();
     }
     /// <summary>
     /// A SPTab
@@ -175,22 +177,46 @@ namespace SpotDev
                         path.Append("\\" + tokens[i] );
                     }
                     FileInfo file = new FileInfo(path.ToString());
+                   
                     if (file.Name == "manifest.json")
                     {
+#if(manifest)
+                    
                         SPManifestEditor manifestEditor = new SPManifestEditor();
                         manifestEditor.LoadFile(file.FullName);
                         ShowControl(manifestEditor, file.Name, uri);
                         if (this.TabChanged != null)
                             this.TabChanged(this, new EventArgs());
+#else
+                        SPTextEditor textEditor = new SPTextEditor();
+                        textEditor.LoadFile(file.FullName);
+                        ShowControl(textEditor, file.Name, uri);
+                        if (this.TabChanged != null)
+                            this.TabChanged(this, new EventArgs());
+#endif
                     }
                     else
                     {
                         switch (file.Extension)
                         {
 
-                            default:
+                            case ".txt":
+                            case ".js":
+                            case ".json":
                                 {
                                     SPTextEditor textEditor = new SPTextEditor();
+                                    textEditor.LoadFile(file.FullName);
+                                    ShowControl(textEditor, file.Name, uri);
+                                    if (this.TabChanged != null)
+                                        this.TabChanged(this, new EventArgs());
+
+                                }
+                                break;
+                            case ".html":
+                            case ".xhtml":
+                              
+                                {
+                                    SPHTMLEditor textEditor = new SPHTMLEditor();
                                     textEditor.LoadFile(file.FullName);
                                     ShowControl(textEditor, file.Name, uri);
                                     if (this.TabChanged != null)

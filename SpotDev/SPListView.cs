@@ -41,17 +41,22 @@ namespace SpotDev
             if (Item.Text.StartsWith("#"))
             {
                 foreColor = Color.FromArgb(150,150,150);
-                g.DrawString(Item.Text.ToUpper().Replace("#", ""), new Font("MS Sans Serif", 8), new SolidBrush(Color.FromArgb(50,50,50)), new Point(4, pos + 2));
+                g.DrawString(Item.Text.ToUpper().Replace("#", ""), new Font("MS Sans Serif", 8), new SolidBrush(Color.FromArgb(50,50,50)), new Point(4, pos + 0));
                 g.DrawString(Item.Text.ToUpper().Replace("#", ""), new Font("MS Sans Serif", 8), new SolidBrush(foreColor), new Point(4, pos + 1));
             }
             else
             {
+                
                 if (Item.Selected)
                 {
 
                     g.DrawImage(Resources.menu_selection, 0, pos, this.Width * 500, Resources.menu_selection.Height);
 
                     foreColor = Program.Skin.SelectedForeColor;
+                }
+                else if (Item.Touched)
+                {
+                    g.FillRectangle(new SolidBrush(Color.Gray), 0, pos, this.Width, ItemHeight);
                 }
                 else
                 {
@@ -161,13 +166,6 @@ namespace SpotDev
             if (e.Y > pos && e.Y < pos + ItemHeight)
             {
                 
-                // If clicked on expander
-                if (e.X < level + 17 && Item.Children.Count > 0)
-                {
-                    Item.Expanded = !Item.Expanded;
-                    pos += ItemHeight;
-                    return;
-                }
                
 
 
@@ -188,25 +186,95 @@ namespace SpotDev
         }
         private void SPListView_MouseDown(object sender, MouseEventArgs e)
         {
+
+            int pos = -scrollY;
+            int level = 0;
+            // Draw all list items
+
+            foreach (SPListItem Item in Items)
+            {
+                deselectTouchItem(Item);
+            }
+            if (Items != null)
+
+                foreach (SPListItem Item in Items)
+                {
+
+                    touchItem(Item, e, ref level, ref pos);
+
+                }
+
+
+            this.Paint(this.CreateGraphics());
+        }
+        private bool expanding = false;
+        private void touchItem(SPListItem Item, MouseEventArgs e, ref int level, ref int pos)
+        {
+            if (e.Y > pos && e.Y < pos + ItemHeight)
+            {
+
+                // If clicked on expander
+                if (e.X < level + 17 && Item.Children.Count > 0)
+                {
+                    Item.Expanded = !Item.Expanded;
+                    pos += ItemHeight;
+                    expanding = true;
+                    return;
+                }
+
+
+
+                Item.Touched = true;
+            }
+            pos += ItemHeight;
+            // If has subitems draw them
+            if (Item.Expanded)
+                foreach (SPListItem subItem in Item.Children)
+                {
+                    level += 16;
+                    touchItem(subItem, e, ref level, ref pos);
+                    level -= 16;
+                }
+        }
+
+        private void deselectTouchItem(SPListItem item)
+        {
+            item.Touched = false;
+            foreach (SPListItem subItem in item.Children)
+            {
+                deselectTouchItem(subItem);
+            }
+        }
+
+        private void SPListView_MouseUp(object sender, MouseEventArgs e)
+        {
+            try
+            {
                 int pos = -scrollY;
                 int level = 0;
                 // Draw all list items
-                foreach (SPListItem Item in Items)
+                if (!expanding)
                 {
-                    deselectItem(Item);
-                }
-                if (Items != null)
-
                     foreach (SPListItem Item in Items)
                     {
-
-                        checkItem(Item, e, ref level, ref pos);
-
+                        deselectItem(Item);
                     }
-           
-           
-            this.Paint(this.CreateGraphics());
+                    if (Items != null)
 
+                        foreach (SPListItem Item in Items)
+                        {
+
+                            checkItem(Item, e, ref level, ref pos);
+
+                        }
+                }
+                expanding = false;
+                
+            }
+            catch (Exception ex)
+            {
+            }
+            this.Paint(this.CreateGraphics());
         }
     }
     

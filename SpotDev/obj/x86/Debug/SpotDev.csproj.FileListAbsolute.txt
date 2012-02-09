@@ -15,4 +15,9 @@ L:\SpotDev\SpotDev\obj\x86\Debug\SpotDev.pdb
 L:\SpotDev\SpotDev\obj\x86\Debug\SpotDev.SPTextEditor.resources
 L:\SpotDev\SpotDev\obj\x86\Debug\SpotDev.ManifestEditor.resources
 L:\SpotDev\SpotDev\obj\x86\Debug\SpotDev.SPManifestEditor.resources
-L:\SpotDev\SpotDev\obj\x86\Debug\SpotDev.AddFile.resources
+L:\SpotDev\SpotDev\bin\Debug\AIMS.CodeEditor.pdb
+L:\SpotDev\SpotDev\bin\Debug\AIMS.SyntaxDocument.pdb
+L:\SpotDev\SpotDev\obj\x86\Debug\SpotDev.SPHTMLEditor.resources
+L:\SpotDev\SpotDev\obj\x86\Debug\SpotDev.Editors.SPTabEditor.resources
+L:\SpotDev\SpotDev\obj\x86\Debug\SpotDev.AddNewAppForm.resources
+L:\SpotDev\SpotDev\obj\x86\Debug\SpotDev.AddProjectForm.resources

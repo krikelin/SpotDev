@@ -1,6 +1,6 @@
 ﻿namespace SpotDev
 {
-    partial class ManifestEditor
+    partial class ManifestEditor 
     {
         /// <summary>
         /// Required designer variable.

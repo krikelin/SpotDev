@@ -1,0 +1,39 @@
+﻿/********************
+Auto-generated manifest.json for the spotify apps project '$(App)'
+********************/
+{
+	"BundleType": "Application",
+	"AppName": {
+			"en" : "${App.title}"
+	}
+	"SupportedLanguages":[
+		"en"
+	],
+	"AcceptedLinkTypes":[
+		"artist", "playlist", "track", "user"
+	],
+	"AppDescription":{
+		"en":"${App.Description}"
+	},
+	"AppURL": "${App.Url}",
+	"BundleCopyright":"(C) ${Year} ${App.Author}",
+	"AppIcon":{	
+		"36x18" :"${App.BundleIdentifier}.png"
+	},
+	"BundleVersion": "${App.BundleVersion}",
+	"DefaultTabs":[
+		{
+			"title":{
+				"en":"Overview"
+			},
+			"arguments":"overview"
+		}
+	],
+	"RequiredPermissions":[
+		"http://*.spotify.com"
+	],
+	"BundleIdentifier": "${App.BundleIdentifier}",
+	"RequiredInterface" : 1,
+	
+	"VendorIdentifier": "com.${App.Vendor}"
+}

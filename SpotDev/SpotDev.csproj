@@ -35,6 +35,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AIMS.CodeEditor, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\AIMS.CodeEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="AIMS.SyntaxDocument, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\AIMS.SyntaxDocument.dll</HintPath>
+    </Reference>
     <Reference Include="CefSharp, Version=0.3.4006.34354, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\CefSharp.dll</HintPath>
@@ -63,13 +71,25 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddFile.cs">
+    <Compile Include="AddProjectForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddFile.Designer.cs">
-      <DependentUpon>AddFile.cs</DependentUpon>
+    <Compile Include="AddProjectForm.Designer.cs">
+      <DependentUpon>AddProjectForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Class1.cs" />
+    <Compile Include="Editors\SPTabEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Editors\SPTabEditor.Designer.cs">
+      <DependentUpon>SPTabEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Editors\SPTextEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Editors\SPTextEditor.Designer.cs">
+      <DependentUpon>SPTextEditor.cs</DependentUpon>
+    </Compile>
     <Compile Include="IEditor.cs" />
     <Compile Include="InputDialog.cs">
       <SubType>Form</SubType>
@@ -89,6 +109,12 @@
     <Compile Include="ManifestEditor.Designer.cs">
       <DependentUpon>ManifestEditor.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddNewAppForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddNewAppForm.Designer.cs">
+      <DependentUpon>AddNewAppForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources.Designer.cs">
@@ -97,10 +123,10 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="SPListItem.cs" />
-    <Compile Include="SPManifestEditor.cs">
+    <Compile Include="Editors\SPManifestEditor.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="SPManifestEditor.Designer.cs">
+    <Compile Include="Editors\SPManifestEditor.Designer.cs">
       <DependentUpon>SPManifestEditor.cs</DependentUpon>
     </Compile>
     <Compile Include="Spotify.cs" />
@@ -108,11 +134,11 @@
     <Compile Include="SPTabView.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="SPTextEditor.cs">
+    <Compile Include="Editors\SPHTMLEditor.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="SPTextEditor.Designer.cs">
-      <DependentUpon>SPTextEditor.cs</DependentUpon>
+    <Compile Include="Editors\SPHTMLEditor.Designer.cs">
+      <DependentUpon>SPHTMLEditor.cs</DependentUpon>
     </Compile>
     <Compile Include="SPWebBrowser.cs">
       <SubType>UserControl</SubType>
@@ -126,8 +152,18 @@
     <Compile Include="SPListView.Designer.cs">
       <DependentUpon>SPListView.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="AddFile.resx">
-      <DependentUpon>AddFile.cs</DependentUpon>
+    <EmbeddedResource Include="AddNewAppForm.resx">
+      <DependentUpon>AddNewAppForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddProjectForm.resx">
+      <DependentUpon>AddProjectForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editors\SPTabEditor.resx">
+      <DependentUpon>SPTabEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editors\SPTextEditor.resx">
+      <DependentUpon>SPTextEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InputDialog.resx">
       <DependentUpon>InputDialog.cs</DependentUpon>
@@ -154,11 +190,11 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="SPManifestEditor.resx">
+    <EmbeddedResource Include="Editors\SPManifestEditor.resx">
       <DependentUpon>SPManifestEditor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SPTextEditor.resx">
-      <DependentUpon>SPTextEditor.cs</DependentUpon>
+    <EmbeddedResource Include="Editors\SPHTMLEditor.resx">
+      <DependentUpon>SPHTMLEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SPWebBrowser.resx">
       <DependentUpon>SPWebBrowser.cs</DependentUpon>
@@ -177,6 +213,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <None Include="README.md" />
+    <None Include="Sample_app\manifest.json" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Header.png" />
@@ -222,6 +259,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\world.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_file_js32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Sample_app\index.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Sample_app\script.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Sample_app\index.html.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Sample_app\manifest.json.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Sample_app\script.js.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

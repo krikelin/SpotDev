@@ -38,6 +38,7 @@
             this.Load += new System.EventHandler(this.ucMenu_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.SPListView_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.SPListView_MouseMove);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.SPListView_MouseUp);
             this.ResumeLayout(false);
 
         }

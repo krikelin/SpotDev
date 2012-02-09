@@ -20,6 +20,7 @@ namespace SpotDev
         public Color TabBarBackgroundColor2 = Color.FromArgb(135, 135, 135);
         public LinearGradientBrush TabBarBackgroundGradient; 
         public LinearGradientBrush TabBarActiveBackgroundGradient;
+       
         public DefaultSkin() 
         {
             TabBarActiveBackgroundGradient = new LinearGradientBrush(new Point(0, 0), new Point(0, 24), Color.FromArgb( 44, 44, 44), this.BackgroundColor);
