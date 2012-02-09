@@ -84,17 +84,17 @@ namespace SpotDev
 
         void ISPComponent.Undo()
         {
-            throw new NotImplementedException();
+            
         }
 
         void ISPComponent.Redo()
         {
-            throw new NotImplementedException();
+            
         }
 
         bool ISPComponent.Close()
         {
-            throw new NotImplementedException();
+            return true;
         }
 
         private void label9_Click(object sender, EventArgs e)

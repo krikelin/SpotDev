@@ -20,3 +20,4 @@
 [0209/180406:INFO:CONSOLE(0)] "Uncaught TypeError: Cannot read property 'style' of null," source: http://developer.spotify.com/wp-content/themes/spotify/javascript/common.js?1327934566(6)
 [0209/182356:INFO:CONSOLE(0)] "Uncaught TypeError: Cannot read property 'style' of null," source: http://developer.spotify.com/wp-content/themes/spotify/javascript/common.js?1327934566(6)
 [0209/204640:INFO:CONSOLE(0)] "Uncaught TypeError: Cannot read property 'style' of null," source: http://developer.spotify.com/wp-content/themes/spotify/javascript/common.js?1327934566(6)
+[0209/210601:INFO:CONSOLE(0)] "Uncaught TypeError: Cannot read property 'style' of null," source: http://developer.spotify.com/wp-content/themes/spotify/javascript/common.js?1327934566(6)

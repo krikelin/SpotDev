@@ -281,5 +281,25 @@ namespace SpotDev
         {
 
         }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            /***
+             * Check all open activities if there is something that needs to be saved and ask
+             * */
+            bool cancel = false;
+            foreach (SPTab tab in tabView.Views.Values)
+            {
+                if (tab.Control is ISPComponent)
+                {
+                    ISPComponent component = ((ISPComponent)tab.Control);
+                    if (!component.Close())
+                    {
+                        e.Cancel = true;
+                        return;
+                    }
+                }
+            }
+        }
     }
 }

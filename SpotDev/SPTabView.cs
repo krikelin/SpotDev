@@ -141,14 +141,58 @@ namespace SpotDev
         void SPTabView_MouseDown(object sender, MouseEventArgs e)
         {
             int pos = -scrollX;
-            foreach(SPTab tab in this.Views.Values)
+            if (e.Button == System.Windows.Forms.MouseButtons.Left)
             {
-                if (e.X >= pos && e.X <= pos + 120)
+                foreach (SPTab tab in this.Views.Values)
                 {
-                    Navigate(tab.Title, tab.Uri);
-                    break;
+                    if (e.X >= pos && e.X <= pos + 120)
+                    {
+                        Navigate(tab.Title, tab.Uri);
+                        break;
+                    }
+                    pos += 120;
                 }
-                pos += 120;
+            }
+            else if (e.Button == System.Windows.Forms.MouseButtons.Middle)
+            {
+                int i = 0;
+                foreach (KeyValuePair<String, SPTab> tab in this.Views)
+                {
+                    if (e.X >= pos && e.X <= pos + 120)
+                    {
+                        if (tab.Value.Control is ISPComponent)
+                        {
+                            ISPComponent component = (ISPComponent)tab.Value.Control;
+                            if (component.Close())
+                            {
+                                this.Views.Remove(tab.Key);
+                                this.Controls.Remove(tab.Value.Control); // Remove view
+                                if (i > 0)
+                                {
+                                    SPTab prevTab = this.Views.Values.ElementAt(i - 1);
+                                    this.Navigate(prevTab.Title, prevTab.Uri);
+                                }
+                                else
+                                {
+                                    try
+                                    {
+                                        SPTab prevTab = this.Views.Values.ElementAt(i + 1);
+                                        this.Navigate(prevTab.Title, prevTab.Uri);
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        this.Navigate("Home", new Uri("http://static.cobresia.webfactional.com/spotdev/index.html"));
+                                    }
+                                }
+                                    break;
+                            }
+                            i++;
+                        }
+                        break;
+                    }
+                    pos += 120;
+                }
+                this.Draw(CreateGraphics());
             }
         }
         public void Navigate(String title, Uri uri)

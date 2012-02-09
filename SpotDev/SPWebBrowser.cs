@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace SpotDev
 {
-    public partial class SPWebBrowser : UserControl
+    public partial class SPWebBrowser : UserControl, ISPComponent
     {
         public CefSharp.CefWebBrowser Browser
         {
@@ -38,6 +38,48 @@ namespace SpotDev
         {
             
            
+        }
+
+        public void Save()
+        {
+            
+        }
+
+        public void Save(string fileName)
+        {
+            
+        }
+
+        public bool IsSaved
+        {
+            get
+            {
+                return true;
+            }
+            set
+            {
+                
+            }
+        }
+
+        public void LoadFile(string fileName)
+        {
+            
+        }
+
+        public void Undo()
+        {
+            
+        }
+
+        public void Redo()
+        {
+            
+        }
+
+        public bool Close()
+        {
+            return true;
         }
     }
 }
