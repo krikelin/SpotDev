@@ -356,5 +356,33 @@ namespace SpotDev
             {
             }
         }
+
+        private void toolStripMenuItem14_Click(object sender, EventArgs e)
+        {
+
+
+        }
+
+        private void saveToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ((ISPComponent)tabView.ActiveTab.Control).Save();
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        private void saveAsToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ((ISPComponent)tabView.ActiveTab.Control).Save();
+            }
+            catch (Exception ex)
+            {
+            }
+        }
     }
 }

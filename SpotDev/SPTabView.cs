@@ -8,33 +8,8 @@ using System.IO;
 
 namespace SpotDev
 {
-    /// <summary>
-    /// A component like editor, file manager, browser or whatever
-    /// </summary>
-    public interface ISPComponent 
-    {
-        void Save();
-        void Save(String fileName);
-        bool IsSaved {get;set;}
-        void LoadFile(String fileName);
-        void Undo();
-        void Redo();
-        void Cut();
-        void Copy();
-        void Paste();
-        bool Close();
-        event EventHandler Changed;
-        event EventHandler Saved;
-    }
-    /// <summary>
-    /// A SPTab
-    /// </summary>
-    public class SPTab
-    {
-        public String Title { get; set; }
-        public Control Control { get; set; }
-        public Uri Uri { get; set; }
-    }
+   
+   
     public class SPTabView : Panel
     {
         private SPTab activeTab;
@@ -268,6 +243,7 @@ namespace SpotDev
                         {
 
                             case ".txt":
+                            case ".css":
                             case ".js":
                             case ".json":
                                 {
@@ -306,5 +282,13 @@ namespace SpotDev
         }
         public event EventHandler TabChanged;
     }
-    
+    /// <summary>
+    /// A SPTab
+    /// </summary>
+    public class SPTab
+    {
+        public String Title { get; set; }
+        public Control Control { get; set; }
+        public Uri Uri { get; set; }
+    }
 }
