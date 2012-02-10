@@ -4,10 +4,10 @@ Copyright (C) ${Year} ${App.Author}
 ********************************/
 var sp = getSpotifyApi(1);
 var models = sp.require("sp://import/scripts/api/models");
-var views = sp.require("sp://import/scripts/api/viweas");
-var ui = sp.require("sp://import/scripts/api/ui");
-var pager = sp.require("sp://import/scripts/api/ui");
-
+var views = sp.require("sp://import/scripts/api/views");
+var ui = sp.require("sp://import/scripts/ui");
+var pager = sp.require("sp://import/scripts/pager");
+var dom = sp.require("sp://import/scripts/dom");
 exports.init = init;
 
 /*********
@@ -50,7 +50,7 @@ var App = {
 	when an user clicks on a tab.
 	**/
 	onArgumentsChanged: function() {
-		var arguments = models.application.arguments;
+		var args = models.application.arguments;
 		
 		
 		

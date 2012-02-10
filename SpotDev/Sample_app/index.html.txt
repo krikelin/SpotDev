@@ -7,9 +7,8 @@ Copyright (C) ${Year} ${App.Author}
 	<head>
 		<title>${App.Title}</title>
 		<link rel="stylesheet" href="css/stylesheet.css" type="text/css" />
-		<link rel="stylesheet" href="sp://import/stylesheet/api.css" type="text/css"/>
-		<link rel="stylesheet" href="sp://import/stylesheet/${App.Theme}.css" type="text/css"/>
-		<script src="script.js" type="text/javascript" language="javascript"></script>
+		<link rel="stylesheet" href="sp://import/css/api.css" type="text/css"/>
+		<link rel="stylesheet" href="sp://import/css/eve.css" type="text/css"/>
 	</head>
 	<body onload="sp = getSpotifyApi(1); script = sp.require('script'); script.init();">
 		<!-- Write your elements here -->
