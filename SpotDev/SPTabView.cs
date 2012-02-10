@@ -19,7 +19,12 @@ namespace SpotDev
         void LoadFile(String fileName);
         void Undo();
         void Redo();
+        void Cut();
+        void Copy();
+        void Paste();
         bool Close();
+        event EventHandler Changed;
+        event EventHandler Saved;
     }
     /// <summary>
     /// A SPTab
@@ -122,6 +127,24 @@ namespace SpotDev
             this.activeTab = tab;
             Views.Add(url, tab);
             control.BringToFront();
+            if (control is ISPComponent)
+            {
+                ISPComponent comp = (ISPComponent)control;
+                comp.Changed += new EventHandler(comp_Changed);
+                comp.Saved += new EventHandler(comp_Saved);
+            }
+        }
+
+        void comp_Saved(object sender, EventArgs e)
+        {
+            Draw(CreateGraphics());
+        
+        }
+
+        void comp_Changed(object sender, EventArgs e)
+        {
+            Draw(CreateGraphics());
+         
         }
         public SPTabView()
             : base() {

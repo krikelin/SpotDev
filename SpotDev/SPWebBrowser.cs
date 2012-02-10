@@ -11,6 +11,24 @@ namespace SpotDev
 {
     public partial class SPWebBrowser : UserControl, ISPComponent
     {
+        public void Redo()
+        {
+        
+        }
+        public void Cut()
+        {
+           
+        }
+        public void Copy()
+        {
+         
+        }
+        public void Paste()
+        {
+         
+        }
+        public event EventHandler Changed;
+        public event EventHandler Saved;
         public CefSharp.CefWebBrowser Browser
         {
             get
@@ -72,10 +90,6 @@ namespace SpotDev
             
         }
 
-        public void Redo()
-        {
-            
-        }
 
         public bool Close()
         {

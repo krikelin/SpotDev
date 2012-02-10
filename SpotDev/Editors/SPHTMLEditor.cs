@@ -11,7 +11,9 @@ using System.IO;
 namespace SpotDev
 {
     public partial class SPHTMLEditor : UserControl, ISPComponent
-    {
+    {   
+        public event EventHandler Changed;
+        public event EventHandler Saved;
         /// <summary>
         /// File name
         /// </summary>
@@ -29,6 +31,10 @@ namespace SpotDev
         void richTextBox1_TextChanged(object sender, EventArgs e)
         {
             isSaved = false;
+            if (Changed != null)
+            {
+                this.Changed(this, new EventArgs());
+            }
         }
 
         private void SPTextEditor_Load(object sender, EventArgs e)
@@ -41,17 +47,21 @@ namespace SpotDev
             codeEditor.SelectionForeColor = Program.Skin.SelectedForeColor;
             codeEditor.GutterMarginColor = Program.Skin.SelectionColor;
             codeEditor.LineNumberBackColor = Program.Skin.SelectionColor;
-
+            
         }
 
         public void Save()
         {
             codeEditor.Save();
+            if (Saved != null)
+                Saved(this, new EventArgs());
         }
 
         public void Save(string fileName)
         {
             codeEditor.Save(fileName);
+            if (Saved != null)
+                Saved(this, new EventArgs());
         }
 
         public bool IsSaved
@@ -90,7 +100,7 @@ namespace SpotDev
 
 
 
-        public void Undo()
+        public void  Undo()
         {
             this.codeEditor.Undo();
         }
@@ -121,6 +131,19 @@ namespace SpotDev
         private void codeEditor_Click_1(object sender, EventArgs e)
         {
 
+        }
+        
+        public void Cut()
+        {
+            codeEditor.Cut();
+        }
+        public void Copy()
+        {
+            codeEditor.Copy();
+        }
+        public void Paste()
+        {
+            codeEditor.Paste();
         }
     }
 }

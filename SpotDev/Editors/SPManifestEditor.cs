@@ -13,6 +13,8 @@ namespace SpotDev
 {
     public partial class SPManifestEditor : UserControl, ISPComponent
     {
+        public event EventHandler Changed;
+        public event EventHandler Saved;
        
         public SPManifestEditor()
         {
@@ -96,7 +98,15 @@ namespace SpotDev
         {
             return true;
         }
-
+        public void Cut()
+        {
+        }
+        public void Copy()
+        {
+        }
+        public void Paste()
+        {
+        }
         private void label9_Click(object sender, EventArgs e)
         {
 

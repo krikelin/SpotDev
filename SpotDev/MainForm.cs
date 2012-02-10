@@ -301,5 +301,60 @@ namespace SpotDev
                 }
             }
         }
+
+        private void undoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ((ISPComponent)tabView.ActiveTab.Control).Undo();
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        private void redoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ((ISPComponent)tabView.ActiveTab.Control).Redo();
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        private void cuitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ((ISPComponent)tabView.ActiveTab.Control).Cut();
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        private void copyToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ((ISPComponent)tabView.ActiveTab.Control).Copy();
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        private void pasteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ((ISPComponent)tabView.ActiveTab.Control).Paste();
+            }
+            catch (Exception ex)
+            {
+            }
+        }
     }
 }

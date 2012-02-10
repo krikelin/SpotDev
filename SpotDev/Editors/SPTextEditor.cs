@@ -12,6 +12,8 @@ namespace SpotDev
 {
     public partial class SPTextEditor : UserControl, ISPComponent
     {
+        public event EventHandler Changed;
+        public event EventHandler Saved;
         /// <summary>
         /// File name
         /// </summary>
@@ -29,6 +31,10 @@ namespace SpotDev
         void richTextBox1_TextChanged(object sender, EventArgs e)
         {
             isSaved = false;
+            if (Changed != null)
+            {
+                this.Changed(this, new EventArgs());
+            }
         }
 
         private void SPTextEditor_Load(object sender, EventArgs e)
@@ -46,11 +52,17 @@ namespace SpotDev
         public void Save()
         {
             codeEditor.Save();
+            isSaved = true;
+            if (Saved != null)
+                Saved(this, new EventArgs());
         }
 
         public void Save(string fileName)
         {
             codeEditor.Save(fileName);
+            isSaved = true;
+            if (Saved != null)
+                Saved(this, new EventArgs());
         }
 
         public bool IsSaved
@@ -116,6 +128,19 @@ namespace SpotDev
                 }
             }
             return true;
+        }
+        
+        public void Cut()
+        {
+            codeEditor.Cut();
+        }
+        public void Copy()
+        {
+            codeEditor.Copy();
+        }
+        public void Paste()
+        {
+            codeEditor.Paste();
         }
     }
 }
