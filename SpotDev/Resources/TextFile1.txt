@@ -1,0 +1,55 @@
+﻿// Index of the <% tag
+            int startPoint = 0;
+            while (startPoint != -1)
+            {
+                // Find an start point
+                int indexOfStart1 = input.IndexOf("<?");
+                int indexOfStart2 = input.IndexOf("\n%");
+               
+            
+                // Start and the ending point of the code snippet
+              
+                int endPoint = 0;
+                // Segment length of start and end point
+                int lStartSegment = 0;
+                int lEndSegment = 0;
+                // If <? is the closest starting point
+                if(indexOfStart1 < indexOfStart2)
+                {
+                    if (indexOfStart1 != -1)
+                    {
+                       startPoint = indexOfStart1;
+                       endPoint = input.IndexOf("?>", startPoint);
+                        lEndSegment=2;
+                    }
+                }
+                else
+                {
+                    if(indexOfStart2 != -1)
+                    {
+                        startPoint = indexOfStart2;
+                        endPoint = input.IndexOf("\n", startPoint);
+                        lStartSegment=1;
+                    }
+                }
+
+                // Definite startpoint
+                int definiteStartPoint = startPoint + lStartSegment ;
+
+                // Get the contents inside the point and format it so it will fit as an code segment
+                String Line = input.Substring(definiteStartPoint,endPoint);
+
+
+                String codeSnippet = "\"); " + Line + " __printx('\"";
+                    /**
+                     * Just add thel ine back to the call-stack but remove any breaks, 
+                     * breaks are substituted with <%%BREAKS%%> and " with <%%C%%>
+                     * 
+                     * */
+                    /**
+                     * Then replace all prefixes @{A} with correspondending variables
+                     * */
+                    l
+                    CallStack += line;
+                
+            }

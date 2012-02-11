@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Welcome</title>
+		<!--<style type="text/css">
+			h1 {
+				color:#333333;
+			}
+			body {
+			/*	background-image: url(start_page.png);*/
+				background-repeat: no-repeat;
+				background-color:#EEEEEE;
+				color:#888888;
+				font-family: "Helvetica";
+				text-shadow:0px 1px #FFFFFF;
+				padding: 10px;
+			}
+			h1 {
+			
+		</style>-->
+		<link rel="stylesheet" href="spdev://style.css" type="text/css" />
+	</head>
+	<body>
+		<h1>Welcome</h1>
+		<p>This is the cool environment where the magic happens!</p>
+		<?
+		-- test
+		?>
+% for i = 0 , 10 do __printx("C") end
+	
+	</body>
+</html>
