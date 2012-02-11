@@ -200,7 +200,7 @@ namespace SpotDev
             
             if (!Views.ContainsKey(url))
             {
-                if (url.StartsWith("http://"))
+                if (url.StartsWith("http://") || url.StartsWith("mako://"))
                 {
                     ShowControl(new SPWebBrowser(url), "Browser", uri);
                 }

@@ -6,6 +6,10 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.IO;
+using System.Net;
+using Board;
+using CefSharp;
 
 namespace SpotDev
 {
@@ -41,6 +45,7 @@ namespace SpotDev
             InitializeComponent();
             this.Controls.Add(c);
             c.Dock = DockStyle.Fill;
+            
         }
         public SPWebBrowser(String url)
         {
@@ -50,6 +55,7 @@ namespace SpotDev
             c.CreateControl();
             c.Load(url);
         }
+       
         CefSharp.CefWebBrowser c = new CefSharp.CefWebBrowser();
 
         private void SPWebBrowser_Load(object sender, EventArgs e)

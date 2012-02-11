@@ -21,3 +21,4 @@ L:\SpotDev\SpotDev\obj\x86\Debug\SpotDev.SPHTMLEditor.resources
 L:\SpotDev\SpotDev\obj\x86\Debug\SpotDev.Editors.SPTabEditor.resources
 L:\SpotDev\SpotDev\obj\x86\Debug\SpotDev.AddNewAppForm.resources
 L:\SpotDev\SpotDev\obj\x86\Debug\SpotDev.AddProjectForm.resources
+L:\SpotDev\SpotDev\bin\Debug\lua51.dll

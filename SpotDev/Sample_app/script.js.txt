@@ -50,7 +50,7 @@ var App = {
 	when an user clicks on a tab.
 	**/
 	onArgumentsChanged: function() {
-		var args = models.application.arguments;
+		var arg	s = models.application.arguments;
 		
 		
 		

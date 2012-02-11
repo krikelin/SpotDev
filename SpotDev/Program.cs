@@ -17,6 +17,10 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Drawing;
+using CefSharp;
+using System.Net;
+using Board;
+using System.IO;
 
 namespace SpotDev
 {
@@ -213,8 +217,38 @@ namespace SpotDev
             }
         }
     }
+    public class MakoSchemeHandlerFactory : ISchemeHandlerFactory
+    {
+        public ISchemeHandler Create()
+        {
+            return new MakoSchemeHandler();
+        }
+    }
+    public class ResSchemeHandler : CefSharp.ISchemeHandler
+    {
+
+        bool CefSharp.ISchemeHandler.ProcessRequest(CefSharp.IRequest request, ref string mimeType, ref System.IO.Stream stream)
+        {
+            if (request.Url.StartsWith("res://", StringComparison.OrdinalIgnoreCase))
+            {
+                /*WebClient wc = new WebClient();
+                String data = wc.DownloadString(request.Url.ToString());
+                MakoEngine me = new MakoEngine();
+                me.Preprocess(data, "", false, request.Url.ToString());
+
+                stream = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(me.Output));*/
+                
+                mimeType = "text/html";
+                return true;
+            }
+            return false;
+        }
+    }
+
+    
     static class Program
     {
+        public static MakoEngine me = new MakoEngine();
         public static DefaultSkin Skin = new DefaultSkin();
         /// <summary>
         /// The main entry point for the application.
@@ -222,7 +256,9 @@ namespace SpotDev
         [STAThread]
         static void Main()
         {
+            me.ConcationToken = "..";
             CefSharp.CEF.Initialize(new CefSharp.Settings(), new CefSharp.BrowserSettings());
+            CefSharp.CEF.RegisterScheme("mako", new MakoSchemeHandlerFactory());
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainForm());

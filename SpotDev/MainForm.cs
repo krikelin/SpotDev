@@ -12,7 +12,15 @@ namespace SpotDev
 {
     public partial class MainForm : Form
     {
-        
+        public List<project> projects = new List<project>();
+        /// <summary>
+        /// Class used by mako
+        /// </summary>
+        public class project
+        {
+            public String identifier;
+            public String title;
+        }
         private void ListDirectory(String project, DirectoryInfo Dir, SPListItem item,ref String path)
         {
             SPListItem add_file = item.AddItem("Add File", new Uri("spotdev:project:" + project + ":" + path + "#AddFile"), Resources.ic_add);
@@ -61,7 +69,10 @@ namespace SpotDev
             d.Icon = Resources.spotifyapp;
             String path = "";
             ListDirectory(Dir.Name, Dir, d, ref path);
-           
+            project c = new project();
+            c.title = Dir.Name;
+            c.identifier = Dir.Name;
+            projects.Add(c);
 
            
             
@@ -71,6 +82,8 @@ namespace SpotDev
         public void BuildMenu()
         {
             this.spListView1.Items.Clear();
+            projects = new List<project>();
+           
             // Add prexisisting
             AddItem("", new Uri("http://static.cobresia.webfactional.com/spotdev/index.html"));
             
@@ -113,6 +126,7 @@ namespace SpotDev
             {
                 LoadProject(di);
             }
+            Program.me.RuntimeMachine.SetVariable("projects", projects.ToArray());
         }
         public void CreateNewApp(String name, String _namespace, String vendor)
         {
@@ -196,14 +210,15 @@ namespace SpotDev
             this.panel3.TabStop = true;
 
             this.panel3.Controls.Add(contentPanel);
+            this.panel3.Controls.Add(sideBar);
             this.panel3.Controls.Add(spListView1);
             
-      //      contentPanel.Controls.Add(sideBar);
             sideBar.Dock = DockStyle.Right;
             sideBar.Width = 320;
             
             contentPanel.TabStop = true;
             contentPanel.Dock = DockStyle.Fill;
+            contentPanel.BringToFront();
             spListView1.Dock = DockStyle.Left;
 
 
@@ -226,7 +241,7 @@ namespace SpotDev
             this.contentPanel.Controls.Add(tabView);
             tabView.Dock = DockStyle.Fill;
             tabView.TabChanged += new EventHandler(tabView_TabChanged);
-            navigate(new Uri("http://static.cobresia.webfactional.com/spotdev/index.html"));
+            navigate(new Uri("mako://static.cobresia.webfactional.com/spotdev/index.html"));
             
             
         }

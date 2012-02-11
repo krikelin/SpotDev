@@ -84,11 +84,13 @@ namespace SpotDev.Properties {
         ///	&lt;head&gt;
         ///		&lt;title&gt;${App.Title}&lt;/title&gt;
         ///		&lt;link rel=&quot;stylesheet&quot; href=&quot;css/stylesheet.css&quot; type=&quot;text/css&quot; /&gt;
-        ///		&lt;link rel=&quot;stylesheet&quot; href=&quot;sp://import/stylesheet/api.css&quot; type=&quot;text/css&quot;/&gt;
-        ///		&lt;link rel=&quot;stylesheet&quot; href=&quot;sp://import/stylesheet/${App.Theme}.css&quot; type=&quot;text/css&quot;/&gt;
-        ///		&lt;script src=&quot;script.js&quot; type=&quot;text/javascript&quot; language=&quot;javascript&quot;&gt;&lt;/script&gt;
+        ///		&lt;link rel=&quot;stylesheet&quot; href=&quot;sp://import/css/api.css&quot; type=&quot;text/css&quot;/&gt;
+        ///		&lt;link rel=&quot;stylesheet&quot; href=&quot;sp://import/css/eve.css&quot; type=&quot;text/css&quot;/&gt;
         ///	&lt;/head&gt;
-        ///	&lt;body onload=&quot;sp = getSpotifyApi(1); sc [rest of string was truncated]&quot;;.
+        ///	&lt;body onload=&quot;sp = getSpotifyApi(1); script = sp.require(&apos;script&apos;); script.init();&quot;&gt;
+        ///		&lt;!-- Write your elements here --&gt;
+        ///	&lt;/body&gt;
+        ///&lt;/html&gt;.
         /// </summary>
         internal static string index_html {
             get {
@@ -97,13 +99,10 @@ namespace SpotDev.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to /********************
-        ///Auto-generated manifest.json for the spotify apps project &apos;$(App)&apos;
-        ///********************/
-        ///{
+        ///   Looks up a localized string similar to {
         ///	&quot;BundleType&quot;: &quot;Application&quot;,
         ///	&quot;AppName&quot;: {
-        ///			&quot;en&quot; : &quot;${App.title}&quot;
+        ///			&quot;en&quot; : &quot;${App.Title}&quot;
         ///	}
         ///	&quot;SupportedLanguages&quot;:[
         ///		&quot;en&quot;
@@ -119,7 +118,13 @@ namespace SpotDev.Properties {
         ///	&quot;AppIcon&quot;:{	
         ///		&quot;36x18&quot; :&quot;${App.BundleIdentifier}.png&quot;
         ///	},
-        ///	&quot;BundleVersion&quot;: &quot; [rest of string was truncated]&quot;;.
+        ///	&quot;BundleVersion&quot;: &quot;${App.BundleVersion}&quot;,
+        ///	&quot;DefaultTabs&quot;:[
+        ///		{
+        ///			&quot;title&quot;:{
+        ///				&quot;en&quot;:&quot;Overview&quot;
+        ///			},
+        ///			&quot;arguments&quot;:&quot;overview&quot; [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string manifest_json {
             get {
@@ -134,25 +139,28 @@ namespace SpotDev.Properties {
         ///********************************/
         ///var sp = getSpotifyApi(1);
         ///var models = sp.require(&quot;sp://import/scripts/api/models&quot;);
-        ///var views = sp.require(&quot;sp://import/scripts/api/viweas&quot;);
-        ///var ui = sp.require(&quot;sp://import/scripts/api/ui&quot;);
-        ///var pager = sp.require(&quot;sp://import/scripts/api/ui&quot;);
-        ///
+        ///var views = sp.require(&quot;sp://import/scripts/api/views&quot;);
+        ///var ui = sp.require(&quot;sp://import/scripts/ui&quot;);
+        ///var pager = sp.require(&quot;sp://import/scripts/pager&quot;);
+        ///var dom = sp.require(&quot;sp://import/scripts/dom&quot;);
         ///exports.init = init;
         ///
         ////*********
         ///Init function
         ///************/
         ///function init() {
-        ///	/*
-        ///	Write your actions here
-        ///	*/
-        ///	
-        ///	// In [rest of string was truncated]&quot;;.
+        ///	/* [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string script_js {
             get {
                 return ResourceManager.GetString("script_js", resourceCulture);
+            }
+        }
+        
+        internal static byte[] style_css {
+            get {
+                object obj = ResourceManager.GetObject("style_css", resourceCulture);
+                return ((byte[])(obj));
             }
         }
     }

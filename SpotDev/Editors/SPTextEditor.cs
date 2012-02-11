@@ -39,8 +39,7 @@ namespace SpotDev
 
         private void SPTextEditor_Load(object sender, EventArgs e)
         {
-            codeEditor.BackColor = Color.FromArgb(244, 244, 244);
-            codeEditor.ForeColor = Program.Skin.ForegroundColor;
+          
             //  codeEditor.ShowLineNumbers = false;
             codeEditor.SelectionBackColor = Program.Skin.SelectionColor;
 

@@ -51,6 +51,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\ICSharpCode.TextEditor.dll</HintPath>
     </Reference>
+    <Reference Include="LuaInterface, Version=2.0.0.16708, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\LuaInterface.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
@@ -104,6 +108,10 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Mako\CssParser.cs" />
+    <Compile Include="Mako\IScriptEngine.cs" />
+    <Compile Include="Mako\LuaEngine.cs" />
+    <Compile Include="Mako\Mako.cs" />
     <Compile Include="ManifestEditor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -123,6 +131,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Schemes\MakoSchemeHandler.cs" />
+    <Compile Include="Schemes\SPDevSchemeHandler.cs" />
+    <Compile Include="Schemes\SPResourceSchemeHandler.cs" />
     <Compile Include="SPListItem.cs" />
     <Compile Include="Editors\SPManifestEditor.cs">
       <SubType>UserControl</SubType>
@@ -131,7 +142,7 @@
       <DependentUpon>SPManifestEditor.cs</DependentUpon>
     </Compile>
     <Compile Include="Spotify.cs" />
-    <Compile Include="SPScheme.cs" />
+    <Compile Include="Schemes\SPScheme.cs" />
     <Compile Include="SPTabView.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -278,6 +289,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Sample_app\script.js.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Mako\speaker_selected.png" />
+    <Content Include="Mako\TextFile1.txt" />
+    <None Include="Resources\index_html" />
+    <Content Include="Resources\speaker_selected.png" />
+    <None Include="Resources\style_css" />
+    <Content Include="Resources\TextFile1.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\fz3-13289139890540\" />
+    <Folder Include="Resources\fz3-13289139936440\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
